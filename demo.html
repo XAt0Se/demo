@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock University Registration Page</title>
+</head>
+<body>
+    <h1>Welcome to Mock University Registration</h1>
+    <form id="loginForm">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username"><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password"><br><br>
+        <button type="submit">Login</button>
+    </form>
+
+    <div id="registrationForm" style="display:none;">
+        <h2>Select Term</h2>
+        <select id="termSelect">
+            <option value="Spring 2024">Spring 2024</option>
+            <option value="Summer 2024">Summer 2024</option>
+            <option value="Fall 2024">Fall 2024</option>
+        </select>
+        <button id="continueButton">Continue</button>
+    </div>
+
+    <div id="crnForm" style="display:none;">
+        <h2>Enter CRNs</h2>
+        <input type="text" id="crnInput" placeholder="Enter CRN"><br><br>
+        <button id="addButton">Add CRN</button>
+        <button id="submitButton">Submit</button>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            console.log("Username: " + username + ", Password: " + password);
+            // Simulate login action
+            setTimeout(showRegistrationForm, 2000); // Simulating delay for login
+        });
+
+        function showRegistrationForm() {
+            document.getElementById("loginForm").style.display = "none";
+            document.getElementById("registrationForm").style.display = "block";
+        }
+
+        document.getElementById("continueButton").addEventListener("click", function() {
+            // Simulate continue action
+            setTimeout(showCRNForm, 2000); // Simulating delay for loading term
+        });
+
+        function showCRNForm() {
+            document.getElementById("registrationForm").style.display = "none";
+            document.getElementById("crnForm").style.display = "block";
+        }
+
+        document.getElementById("submitButton").addEventListener("click", function() {
+            // Simulate submit action
+            var crnInput = document.getElementById("crnInput");
+            crnInput.value = ''; // Clear CRN input field
+            // Optionally, you can remove the "Form submitted successfully!" alert
+            // alert("Form submitted successfully!"); // You may replace this with actual form submission logic
+        });
+    </script>
+</body>
+</html>
